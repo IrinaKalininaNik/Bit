@@ -210,3 +210,21 @@ ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 	}
 	return ostr;
 }
+void TBitField::Resize(int asize)
+{
+	BitLen = asize;
+	int Tom = MemLen;
+	MemLen = (asize-1)/32+1;
+	TELEM *Jerry = new TELEM[MemLen];
+	for(int i=0; i<MemLen; i++)
+	{
+		if(i<Tom)
+			Jerry[i] = pMem[i];
+		else
+			Jerry[i]=0;
+	}
+	delete[] pMem;
+	pMem = Jerry;
+
+}
+
