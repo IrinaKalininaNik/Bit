@@ -160,3 +160,26 @@ ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 	}
 	return ostr;
 }
+int* TSet::Copi()
+{
+	int* t;
+	int counter;
+	for (int i=0; i<MaxPower; i++)
+		if(IsMember(i))
+			counter++;
+	t= new int[counter];
+	counter=0;
+	for (int i=0; i<MaxPower; i++)
+		if(IsMember(i))
+			t[counter++]=i;
+	return t;
+
+}
+
+void TSet::Resize(int asize)
+{
+	MaxPower = asize;
+	BitField.Resize(asize);
+}
+
+
